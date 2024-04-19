@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <img class="img" src="/images/imagen1.jpg" id="imagen1" height="100" alt="paisaje"/>
+      </div>
+      <div>
+        <img class="img" src="/images/imagen2.jpg" id="imagen2" height="100" alt="paisaje" />
+      </div>
+      <div>
+        <img class="img" src="/images/imagen3.jpg" id="imagen3" height="100" alt="paisaje" />
+      </div>
+    </div>
+
+    <script>
+      const imagenes = Array.from(document.getElementsByTagName("img"));
+      imagenes.forEach((img) =>
+        img.addEventListener("click", (e) => {
+          fetch("http://localhost:3008/imagen/" + e.target.id, {
+            method: "DELETE",
+          }).then(() => location.reload());
+        })
+      );
+    </script>
+  </body>
+</html>
